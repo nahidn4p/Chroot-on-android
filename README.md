@@ -60,6 +60,10 @@ mount --bind /sys /data/ubuntu/sys
 mount --bind /proc /data/ubuntu/proc
 mount --bind /dev/pts /data/ubuntu/dev/pts
 
+#By default SD Card access did not worked for me in A14.
+#For your internal/external SD Card Access from chroot
+mount --bind /sdcard /data/ubuntu/sdcard
+
 
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export TERM=$TERM
@@ -101,8 +105,8 @@ then you need to add android root groups:
 ```shell
 groupadd -g 3001 aid_bt
 groupadd -g 3002 aid_bt_net
-groupadd -g 3003 aid_inet
-groupadd -g 3004 aid_net_raw
+groupadd -g 3003 aid_inet                 #use different number if 3003 shows already exist
+groupadd -g 3004 aid_net_raw              #use different number if 3004 shows already exist
 groupadd -g 3005 aid_admin
 ```
 
